@@ -1,2 +1,2 @@
 # Shelf-whisper-
-This repository contains our web development project which we are going to create under college project. This will be our first technical project. :))
+Shelf whisper is a seamless online library, where you can easily search and purchase books across various categories. Join a vibrant community of local book lovers to borrow or rent, explore a rich collection of audiobooks, and connect with publishers if you aspire to write. Plus, it gives access to sell your pre-loved books to fellow readers. The mission of this website is to create a comprehensive and accessible platform that fosters a love for reading and writing by connecting book enthusiasts. 
