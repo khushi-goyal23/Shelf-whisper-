@@ -53,7 +53,6 @@
 background: linear-gradient(90deg, rgba(26,18,11,1) 0%, rgba(62,36,8,1) 100%);
 opacity: 100%;
 
-position: sticky;
 }
 .navbar a {
      float: left;
@@ -119,6 +118,7 @@ body {
 }
 
 .main-content {
+    
     padding: 2rem;
     text-align: center;
 }
@@ -338,8 +338,8 @@ body {
 
     .book-cards {
         display: flex;
-        flex-direction: row; /* Stack cards vertically */
-        align-items: center; /* Center align */
+        flex-direction: row; 
+        align-items: center; 
     }
     
 
@@ -352,8 +352,9 @@ body {
     width: 270px;
     text-align: center;
     position: relative;
-    margin: 10px; /* Margin between cards */
-    flex: 1 1 270px; /* Allow flex to grow/shrink, maintaining a minimum width */
+    margin: 10px; 
+    flex: 1 1 270px; 
+    color:#28160b;
 }
 
 
@@ -641,13 +642,38 @@ body {
     }
 
     .book {
-        width: 60px; /* Adjust book width */
-        height: 300px; /* Adjust book height */
+        width: 60px; 
+        height: 300px; 
     }
 
     .card {
-        width: 220px; /* Adjust card width */
-        height: 300px; /* Adjust card height */
+        width: 220px;
+        height: 300px; 
+    }
+}
+
+@media (max-width: 992px) {
+    .navbar a {
+        font-size: 14px;
+    }
+
+    .category-title {
+        font-size: 60px;
+        margin-left: 10%;
+    }
+
+    .shelf-title {
+        font-size: 24px;
+    }
+
+    .book {
+        width: 50px; 
+        height: 250px; 
+    }
+
+    .card {
+        width: 200px; 
+        height: 250px; 
     }
 }
 
@@ -658,17 +684,13 @@ body {
     }
 
     .navbar a {
-    
         font-size: 14px;
-        
-            padding: 10px 5px; /* Reduced padding */
-            font-size: 14px; /* Adjust font size */
-            text-align: center; /* Centered text */
-        
+        padding: 10px 5px; 
+        text-align: center; 
     }
 
     .shelf-section, .prt2, .prt3, .prt4 {
-        width: 90%; /* Adjust section width */
+        width: 90%;
         padding: 20px;
     }
 
@@ -677,8 +699,8 @@ body {
     }
 
     .carousel img {
-        width: 150px; /* Adjust carousel image size */
-        height: auto; /* Maintain aspect ratio */
+        width: 150px; 
+        height: auto; 
     }
 
     .sidebar {
@@ -689,26 +711,21 @@ body {
     .book-card {
         width: 100%;
         margin-right: 0;
-        
-            flex: 1 1 100%; /* Stack cards to take full width */
-            margin: 10px 0; /* Margin adjustment for vertical spacing */
-        
+        flex: 1 1 100%; 
+        margin: 10px 0; 
     }
-    .book-cards{
+
+    .book-cards {
         display: flex;
         flex-direction: column;
     }
 
     .book-card img {
-        width: 80px; /* Adjust book card image size */
-    }
-    .grid {
-        grid-template-columns: repeat(2, 1fr); /* Change to 2 columns */
+        width: 80px; /
     }
 
-   
     .grid {
-        gap: 5px;
+        grid-template-columns: repeat(2, 1fr); 
     }
 }
 
@@ -719,13 +736,14 @@ body {
     }
 
     .book {
-        width: 50px; /* Further adjust book size */
-        height: 250px; /* Further adjust book height */
+        width: 40px; 
+        height: 200px; 
     }
-    .book-cards{
-        flex-direction: row; /* Change to row on larger screens */
-        justify-content: space-between; /* Space between cards */
-        flex-wrap: wrap; /* Allow wrapping */
+
+    .book-cards {
+        flex-direction: row; 
+        justify-content: space-between; 
+        flex-wrap: wrap;
     }
 
     .shelf-title {
@@ -733,42 +751,23 @@ body {
     }
 
     .card {
-        width: 100%; /* Full width on smaller screens */
-        height: auto; /* Allow height to adjust */
+        width: 100%; 
+        height: auto; 
     }
 
     .toggle-buttons {
-        flex-direction: column; /* Stack toggle buttons */
+        flex-direction: column;
     }
 
     .contact-info div {
-        width: 100%; /* Full width for contact info */
+        width: 100%;
     }
 
     .carousel img {
-        width: 120px; /* Smaller carousel images */
+        width: 120px;
     }
+
     .grid {
-        grid-template-columns: 1fr; /* Stack items in a single column */
-    }
-
-
-/* Ensure the menu is responsive */
-.navbar {
-    flex-wrap: wrap; /* Allow wrapping of menu items */
-}
-
-}
-
-/* Ensure text is readable */
-body {
-    font-size: 16px; /* Base font size */
-}
-
-/* Increase base font size for larger screens */
-@media (min-width: 1200px) {
-    body {
-        font-size: 18px;
+        grid-template-columns: 1fr; 
     }
 }
-

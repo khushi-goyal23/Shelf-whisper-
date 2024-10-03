@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+.almendra-regular {
+    font-family: "Almendra", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .almendra-bold {
+    font-family: "Almendra", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .almendra-regular-italic {
+    font-family: "Almendra", serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .almendra-bold-italic {
+    font-family: "Almendra", serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+  html {
+    scroll-behavior: smooth; 
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff8e1;
+    color: #4a3000;
+    margin: 0;
+    padding: 20px;
+}
+.navbar{
+    overflow: hidden;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    padding: 10px;
+    background: rgb(26,18,11);
+background: linear-gradient(90deg, rgba(26,18,11,1) 0%, rgba(62,36,8,1) 100%);
+opacity: 100%;
+
+position: sticky;
+}
+.navbar a {
+     float: left;
+     display: block;
+     color: #E4A951; 
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+     font-size: 17px;
+    }
+
+.img{
+    width:10vw;
+}
+
+.navbar .right {
+     float: right;
+}
+
+.navbar .icon {
+   
+     font-size: 20px;
+    cursor: pointer;
+    }
+
+    .right a{
+        font-size: 11px;
+    }
+    
+
+   
+
+body {
+    font-family: Arial, sans-serif;
+    background: rgb(26,18,11);
+background: linear-gradient(90deg, rgba(26,18,11,1) 0%, rgba(62,36,8,1) 100%);
+    color: #f0e68c;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: #2f1c11;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav {
+    display: flex;
+    gap: 1rem;
+    
+}
+
+.nav a {
+    color: #f0e68c;
+    text-decoration: none;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #795548;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+}
+h1 {
+    font-family: Georgia, serif;
+    color: #E4A951;
+    text-align: center;
+}
+.profile-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+.user-details {
+    flex-grow: 1;
+}
+.user-name {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.user-bio {
+    font-style: italic;
+    color: #ffd3a4;
+}
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.stat {
+    text-align: center;
+}
+.stat-value {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ffa000;
+}
+.stat-label {
+    color: #c28a75;
+}
