@@ -22,7 +22,9 @@
     font-weight: 700;
     font-style: italic;
   }
-  
+  html {
+    scroll-behavior: smooth; 
+}
 
 *{
     border: 0;
@@ -249,11 +251,12 @@ body {
     
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-}
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+    }
 
 .card {
     position: relative;
@@ -332,10 +335,15 @@ body {
 }
 
 
-.book-cards {
-    display: flex;
-    justify-content: space-between;
-}
+
+    .book-cards {
+        display: flex;
+        flex-direction: row; /* Stack cards vertically */
+        align-items: center; /* Center align */
+    }
+    
+
+
 
 .book-card {
     background-image: url(images/bookcard.jpeg);
@@ -344,9 +352,10 @@ body {
     width: 270px;
     text-align: center;
     position: relative;
-    margin-right: 20px;
-    color:#2d2d2d ;
+    margin: 10px; /* Margin between cards */
+    flex: 1 1 270px; /* Allow flex to grow/shrink, maintaining a minimum width */
 }
+
 
 .book-card img {
     width: 100px;
@@ -461,6 +470,7 @@ body {
     background-position: center;
 }
 .section{
+    display: block;
     margin: 100px 0;
     background-color: #28160b;
     opacity: 80%;
@@ -616,3 +626,149 @@ body {
     height: 100px;
     pointer-events: none;
 }
+@media (max-width: 1200px) {
+    .navbar a {
+        font-size: 15px;
+    }
+
+    .category-title {
+        font-size: 80px;
+        margin-left: 10%;
+    }
+
+    .shelf-title {
+        font-size: 30px;
+    }
+
+    .book {
+        width: 60px; /* Adjust book width */
+        height: 300px; /* Adjust book height */
+    }
+
+    .card {
+        width: 220px; /* Adjust card width */
+        height: 300px; /* Adjust card height */
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar a {
+    
+        font-size: 14px;
+        
+            padding: 10px 5px; /* Reduced padding */
+            font-size: 14px; /* Adjust font size */
+            text-align: center; /* Centered text */
+        
+    }
+
+    .shelf-section, .prt2, .prt3, .prt4 {
+        width: 90%; /* Adjust section width */
+        padding: 20px;
+    }
+
+    .shelf-title, .category-title {
+        font-size: 40px;
+    }
+
+    .carousel img {
+        width: 150px; /* Adjust carousel image size */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .sidebar {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .book-card {
+        width: 100%;
+        margin-right: 0;
+        
+            flex: 1 1 100%; /* Stack cards to take full width */
+            margin: 10px 0; /* Margin adjustment for vertical spacing */
+        
+    }
+    .book-cards{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .book-card img {
+        width: 80px; /* Adjust book card image size */
+    }
+    .grid {
+        grid-template-columns: repeat(2, 1fr); /* Change to 2 columns */
+    }
+
+   
+    .grid {
+        gap: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        flex-direction: column;
+        padding: 5px;
+    }
+
+    .book {
+        width: 50px; /* Further adjust book size */
+        height: 250px; /* Further adjust book height */
+    }
+    .book-cards{
+        flex-direction: row; /* Change to row on larger screens */
+        justify-content: space-between; /* Space between cards */
+        flex-wrap: wrap; /* Allow wrapping */
+    }
+
+    .shelf-title {
+        font-size: 24px;
+    }
+
+    .card {
+        width: 100%; /* Full width on smaller screens */
+        height: auto; /* Allow height to adjust */
+    }
+
+    .toggle-buttons {
+        flex-direction: column; /* Stack toggle buttons */
+    }
+
+    .contact-info div {
+        width: 100%; /* Full width for contact info */
+    }
+
+    .carousel img {
+        width: 120px; /* Smaller carousel images */
+    }
+    .grid {
+        grid-template-columns: 1fr; /* Stack items in a single column */
+    }
+
+
+/* Ensure the menu is responsive */
+.navbar {
+    flex-wrap: wrap; /* Allow wrapping of menu items */
+}
+
+}
+
+/* Ensure text is readable */
+body {
+    font-size: 16px; /* Base font size */
+}
+
+/* Increase base font size for larger screens */
+@media (min-width: 1200px) {
+    body {
+        font-size: 18px;
+    }
+}
+
