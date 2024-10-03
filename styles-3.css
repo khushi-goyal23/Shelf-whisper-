@@ -143,3 +143,6 @@ button:hover {
 p {
     color: rgb(218, 192, 163);
 }
+a{
+    text-decoration: none;
+}
