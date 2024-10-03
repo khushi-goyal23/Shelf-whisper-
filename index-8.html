@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <link rel="stylesheet" href="styles-8.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="Rectangle 2.png" alt="Shelf Share Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Genre</a></li>
+                <li><a href="#">Books</a></li>
+                <li><a href="#">Support</a></li>
+            </ul>
+            <div class="icons">
+                <a href="#"><img src="Group 73.png" alt="User Icon"></a>
+                <a href="#"><img src="Group.png" alt="Cart Icon"></a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="checkout-section">
+            <div class="checkout-header">
+                <button class="checkout-button">Checkout</button>
+            </div>
+            <br>
+            <br>
+
+            <div class="checkout-content">
+                <div class="left-section">
+                    <div class="address-container">
+                        <span>Delivery address</span>
+                        <span>Ayush Gupta<br>
+                        BML Munjal University, <br>
+                        67th Milestone, Kapriwas,<br>
+                        Haryana, 122413</span>
+                    </div>
+
+                    <div class="payment-container">
+                        <span>Payment Method</span>
+                        <ul>
+                            <li><input type="radio" name="payment" id="card" checked> Credit or Debit card</li>
+                            <li><input type="radio" name="payment" id="netbanking"> Net Banking</li>
+                            <li><input type="radio" name="payment" id="upi"> UPI Apps</li>
+                            <li><input type="radio" name="payment" id="cod"> Cash on Delivery</li>
+                        </ul>
+                    </div>
+                    <br>
+                    <br>
+
+                    <button class="place-order-button">Place Order</button>
+                </div>
+
+                <div class="right-section">
+                    <div class="summary-container">
+                        <h3>Summary</h3>
+                        <div class="summary-item">
+                            <p>Subtotal</p>
+                            <p>Rs 210</p>
+                        </div>
+                        <div class="summary-item">
+                            <p>Tax</p>
+                            <p>Rs 35</p>
+                        </div>
+                        <div class="summary-item total">
+                            <p>Total</p>
+                            <p>Rs 245</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
