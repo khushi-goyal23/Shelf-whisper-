@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    color: #f5f5f5;
+    overflow-x: hidden;
+    background-color: #1e1e1e; 
+}
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('brown\ bg.jpg') center / cover no-repeat;
+    filter: brightness(0.75) contrast(1.1) grayscale(0.1);
+    z-index: -1;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    background-color: rgba(0, 0, 0, 0.95);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo img {
+    width: 120px;
+    height: auto;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 50px;
+}
+
+.nav-links a {
+    color: rgb(218, 192, 163);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+    font-family: "Almendra", serif;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #f5f5f5;
+}
+
+.icons img {
+    width: 24px;
+    height: 24px;
+    margin-left: 20px;
+}
+.icons{
+    padding-right: 100px;
+    display: flex;
+    gap: 15px;
+}
+
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    padding: 20px;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    background-color: #5c4736;
+    padding: 20px;
+    border-radius: 10px;
+    height: 500px;
+    width: max-content;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.image img {
+    width: 500px;
+    border-radius: 10px;
+    padding-right: 250px;
+    padding-top: 50px;
+    filter: brightness(0.65) contrast(1.1) grayscale(0.1);
+
+}
+
+.text {
+    margin-left: 20px;
+    font-family: 'amarante';
+    padding-top: 100px;
+    padding-right: 75px;
+}
+
+.text p {
+    font-size: 30px;
+    line-height: 1.6;
+    max-width: 500px;
+    color: rgb(218, 192, 163);
+}
+
+.continue-btn {
+    display: inline-block;
+    background-color: black;
+    color: rgb(218, 192, 163);
+    padding: 10px 20px;
+    font-size: 30px;
+    border: 2px solid rgb(218, 192, 163);
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-family: amethysta;
+    width: 200px;
+    height: 65px;
+}
+
+.continue-btn:hover {
+    background-color: #4c301c;
+}
