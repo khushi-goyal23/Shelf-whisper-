@@ -197,3 +197,8 @@ body::before {
     transform: scale(1.0);
     content: url('Property\ 1=Component\ 20.png'); 
 }
+
+
+a{
+    text-decoration: none;
+}
