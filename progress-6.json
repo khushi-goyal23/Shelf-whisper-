@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "title": "Harry Potter and the Philosopher Stone",
+        "image": "harry potter.jpg",
+        "link": "index-7.html"
+    },
+    {
+        "id": 2,
+        "title": "The Lord of the Rings",
+        "image": "TLOTR.webp",
+        "link": "index-7.html"
+    },
+    {
+        "id": 3,
+        "title": "To Kill a Mockingbird",
+        "image": "tkam.png",
+        "link": "index-7.html"
+    },
+    {
+        "id": 4,
+        "title": "1984",
+        "image": "1984.jpg",
+        "link": "index-7.html"
+    },
+    {
+        "id": 5,
+        "title": "The Grapes of Wrath",
+        "image": "the grapes of wrath.jpg",
+        "link": "index-7.html"
+    },
+    {
+        "id": 6,
+        "title": "Catcher in the Rye",
+        "image": "catcher in the rye.jpg",
+        "link": "index-7.html"
+    },
+    {
+        "id": 7,
+        "title": "The Chronicles of Narnia",
+        "image": "the chronicles.jpg",
+        "link": "index-7.html"
+    },
+    {
+        "id": 8,
+        "title": "The Buried Giant",
+        "image": "the buried giant.jpg",
+        "link": "index-7.html"
+    },
+    {
+        "id": 9,
+        "title": "The Game Of Thrones",
+        "image": "got.jpg",
+        "link": "index-7.html"
+    },
+    {
+        "id": 10,
+        "title": "Non-Fiction",
+        "image": "tgg.png",
+        "link": "index-7.html"
+    }
+]
