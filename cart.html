@@ -3,11 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shelf Whisper</title>
-    <link rel="stylesheet" href="styles-6.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&display=swap" rel="stylesheet">
+    <title>Your Cart - Shelf Whisper</title>
+    <link rel="stylesheet" href="styles-7.css">
 </head>
 <body>
     <header>
@@ -28,19 +25,19 @@
         </nav>
     </header>
 
-    <section class="search-bar">
-        <input type="text" id="searchInput" placeholder="Search for a book...">
-        <button onclick="searchBooks()">Search</button>
-        <div id="searchResult"></div>
-    </section>
-
-    <section class="categories">
-        <section class="categories-container">
-            <h2>Fantasy</h2>
+    <main>
+        <section class="cart-section">
+            <img src="check-mark.png">
+            <br>
+            <span class="cart-title">Your Cart</span>
+            <div class="cart-item">
+                <p><strong>Harry Potter and the Philosopher's Stone</strong> has been added to your cart!</p>
+            </div>
+            <div class="cart-buttons">
+                <a href="checkout.html"><button class="checkout-button">Proceed to Checkout</button></a>
+                <a href="index-6.html"><button class="continue-shopping-button">Continue Shopping</button></a>
+            </div>
         </section>
-        <div id="book-grid" class="book-grid"></div>
-    </section>
-
-    <script src="script-6.js"></script>
+    </main>
 </body>
 </html>
