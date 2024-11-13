@@ -1,0 +1,52 @@
+[
+    {
+        "name": "Book 1",
+        "price": "$10.99",
+        "image": "images/darkrom/darkrom1.jpg",
+        "link": "window.html"
+    },
+    {
+        "name": "Book 2",
+        "price": "$12.99",
+        "image": "images/darkrom/darkrom2.jpg",
+        "link": "window.html"
+    },
+    {
+        "name": "Book 3",
+        "price": "$8.99",
+        "image": "images/darkrom/darkrom3.jpg",
+        "link": "window.html"
+    },
+    {
+        "name": "Book 4",
+        "price": "$15.00",
+        "image": "images/darkrom/darkrom4.jpg",
+        "link": "window.html"
+    },
+    {
+        "name": "Book 1",
+        "price": "$10.99",
+        "image": "images/darkrom/darkrom1.jpg",
+        "link": "window.html"
+    },
+    {
+        "name": "Book 2",
+        "price": "$12.99",
+        "image": "images/darkrom/darkrom2.jpg",
+        "link": "window.html"
+    },
+    {
+        "name": "Book 3",
+        "price": "$8.99",
+        "image": "images/darkrom/darkrom3.jpg",
+        "link": "window.html"
+    },
+    {
+        "name": "Book 4",
+        "price": "$15.00",
+        "image": "images/darkrom/darkrom4.jpg",
+        "link": "window.html"
+    }
+
+
+]

@@ -1,0 +1,191 @@
+{
+    "bestSellers": [
+      {
+        "title": "Ikigai",
+        "image": "images/bestsellers/bestsellers1.jpg",
+        "alt": "Book cover of 'Ikigai' by Hector Garcia and Francesc Miralles"
+      },
+      {
+        "title": "Find Me",
+        "image": "images/bestsellers/bestsellers2.jpg",
+        "alt": "Book cover of 'Find Me' by André Aciman"
+      },
+      {
+        "title": "Pride and Prejudice",
+        "image": "images/bestsellers/bestsellers3.jpg",
+        "alt": "Book cover of 'Pride and Prejudice' by Jane Austen"
+      },
+      {
+        "title": "1984",
+        "image": "images/bestsellers/bestsellers4.jpg",
+        "alt": "Book cover of '1984' by George Orwell"
+      },
+      {
+        "title": "Brave New World",
+        "image": "images/bestsellers/bestsellers5.jpg",
+        "alt": "Book cover of 'Brave New World' by Aldous Huxley"
+      },
+      {
+        "title": "Moby Dick",
+        "image": "images/bestsellers/bestsellers6.jpg",
+        "alt": "Book cover of 'Moby Dick' by Herman Melville"
+      },
+      {
+        "title": "Ikigai",
+        "image": "images/bestsellers/bestsellers1.jpg",
+        "alt": "Book cover of 'Ikigai' by Hector Garcia and Francesc Miralles"
+      },
+      {
+        "title": "Find Me",
+        "image": "images/bestsellers/bestsellers2.jpg",
+        "alt": "Book cover of 'Find Me' by André Aciman"
+      },
+      {
+        "title": "Pride and Prejudice",
+        "image": "images/bestsellers/bestsellers3.jpg",
+        "alt": "Book cover of 'Pride and Prejudice' by Jane Austen"
+      },
+      {
+        "title": "1984",
+        "image": "images/bestsellers/bestsellers4.jpg",
+        "alt": "Book cover of '1984' by George Orwell"
+      },
+      {
+        "title": "Brave New World",
+        "image": "images/bestsellers/bestsellers5.jpg",
+        "alt": "Book cover of 'Brave New World' by Aldous Huxley"
+      },
+      {
+        "title": "Moby Dick",
+        "image": "images/bestsellers/bestsellers6.jpg",
+        "alt": "Book cover of 'Moby Dick' by Herman Melville"
+      }
+      
+    ],
+    "authors": [
+      {
+        "name": "Author A",
+        "image": "images/author/authors1.jpg",
+        "alt": "Author A"
+      },
+      {
+        "name": "Author B",
+        "image": "images/author/authors2.jpg",
+        "alt": "Author B"
+      },
+      {
+        "name": "Author C",
+        "image": "images/author/authors3.jpg",
+        "alt": "Author C"
+      },
+      {
+        "name": "Author D",
+        "image": "images/author/authors4.jpeg",
+        "alt": "Author D"
+      },
+      {
+        "name": "Author E",
+        "image": "images/author/authors5.jpg",
+        "alt": "Author E"
+      },
+      {
+        "name": "Author F",
+        "image": "images/author/authors6.jpg",
+        "alt": "Author F"
+      },
+      {
+        "name": "Author A",
+        "image": "images/author/authors1.jpg",
+        "alt": "Author A"
+      },
+      {
+        "name": "Author B",
+        "image": "images/author/authors2.jpg",
+        "alt": "Author B"
+      },
+      {
+        "name": "Author C",
+        "image": "images/author/authors3.jpg",
+        "alt": "Author C"
+      },
+      {
+        "name": "Author D",
+        "image": "images/author/authors4.jpeg",
+        "alt": "Author D"
+      },
+      {
+        "name": "Author E",
+        "image": "images/author/authors5.jpg",
+        "alt": "Author E"
+      },
+      {
+        "name": "Author F",
+        "image": "images/author/authors6.jpg",
+        "alt": "Author F"
+      }
+      
+    ],
+    "languages": [
+      {
+        "language": "Hindi",
+        "image": "images/languages/language1.jpeg",
+        "alt": "Text in Hindi script"
+      },
+      {
+        "language": "Chinese",
+        "image": "images/languages/language2.jpg",
+        "alt": "Text in Chinese script"
+      },
+      {
+        "language": "English",
+        "image": "images/languages/language3.jpeg",
+        "alt": "Text in English script"
+      },
+      {
+        "language": "Spanish",
+        "image": "images/languages/language4.jpeg",
+        "alt": "Text in Spanish script"
+      },
+      {
+        "language": "French",
+        "image": "images/languages/language5.jpeg",
+        "alt": "Text in French script"
+      },
+      {
+        "language": "German",
+        "image": "images/languages/language6.jpeg",
+        "alt": "Text in German script"
+      },
+      {
+        "language": "Hindi",
+        "image": "images/languages/language1.jpeg",
+        "alt": "Text in Hindi script"
+      },
+      {
+        "language": "Chinese",
+        "image": "images/languages/language2.jpg",
+        "alt": "Text in Chinese script"
+      },
+      {
+        "language": "English",
+        "image": "images/languages/language3.jpeg",
+        "alt": "Text in English script"
+      },
+      {
+        "language": "Spanish",
+        "image": "images/languages/language4.jpeg",
+        "alt": "Text in Spanish script"
+      },
+      {
+        "language": "French",
+        "image": "images/languages/language5.jpeg",
+        "alt": "Text in French script"
+      },
+      {
+        "language": "German",
+        "image": "images/languages/language6.jpeg",
+        "alt": "Text in German script"
+      }
+    ]
+  }
+  
