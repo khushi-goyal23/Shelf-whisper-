@@ -627,6 +627,66 @@ body {
     height: 100px;
     pointer-events: none;
 }
+.carousel-container {
+    position: relative;
+    width: 80%;
+    max-width: 1200px;
+}
+
+.carousel {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.carousel-items {
+    display: flex;
+    transition: transform 0.4s ease;
+}
+
+.carousel-item {
+    min-width: 20%;
+    max-width: 20%;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.carousel-item h3 {
+    margin: 5px 0;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 24px;
+}
+
+.arrow.left {
+    left: 10px;
+}
+
+.arrow.right {
+    right: 10px;
+}
+
+.arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
 @media (max-width: 1200px) {
     .navbar a {
         font-size: 15px;
@@ -771,3 +831,4 @@ body {
         grid-template-columns: 1fr; 
     }
 }
+
