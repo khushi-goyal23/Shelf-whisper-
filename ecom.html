@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buy your own Tale</title>
     <link rel="stylesheet" href="ecom.css">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
 
@@ -29,7 +29,7 @@
             </div>
           </div>
 
-     <main class="main-content">
+     <div class="main-content">
         <section class="shelf-section">
             <h2 class="shelf-title">Choose the Shelf where your tale belongs</h2>
             <div class="bookshelf">
@@ -59,7 +59,7 @@
                 </div>
             </div>
         </section>
-       </main>
+    </div>
     </div>
      <div class="prt2" id="prt2">
         <h2 class="category-title">Exploring the stacks</h2>
@@ -177,56 +177,39 @@
         </div>
            
     </div>
+    
     <div class="prt4">
         <div class="section" id="section1">
-        <h2>
-            Best-sellers
-           </h2>
-           <div class="carousel">
-            <img alt="Book cover of 'Ikigai' by Hector Garcia and Francesc Miralles" height="200" src="images/bestsellers/bestsellers1.jpg" width="150"/>
-            <img alt="Book cover of 'Find Me' by André Aciman" height="200" src="images/bestsellers/bestsellers2.jpg" width="150"/>
-            <img alt="Book cover of 'Pride and Prejudice' by Jane Austen" height="200" src="images/bestsellers/bestsellers3.jpg" width="150"/>
-            <img alt="Book cover of 'Ikigai' by Hector Garcia and Francesc Miralles" height="200" src="images/bestsellers/bestsellers4.jpg" width="150"/>
-            <img alt="Book cover of 'Find Me' by André Aciman" height="200" src="images/bestsellers/bestsellers5.jpg" width="150"/>
-            <img alt="Book cover of 'Pride and Prejudice' by Jane Austen" height="200" src="images/bestsellers/bestsellers6.jpg" width="150"/>
-            <span class="arrow">
-             <i class="fas fa-arrow-right">
-             </i>
-            </span>
-           </div>
-          </div>
-          <div class="section" id="section2">
-           <h2>
-            Authors
-           </h2>
-           <div class="carousel">
-            <img alt="" height="200" src="images/author/authors1.jpg" width="150"/>
-            <img alt="" height="200" src="images/author/authors2.jpg" width="150"/>
-            <img alt="" height="200" src="images/author/authors3.jpg" width="150"/>
-            <img alt="" height="200" src="images/author/authors4.jpeg" width="150"/>
-            <img alt="" height="200" src="images/author/authors5.jpg" width="150"/>
-            <img alt="" height="200" src="images/author/authors6.jpg" width="150"/>
-            <span class="arrow">
-             <i class="fas fa-arrow-right">
-             </i>
-            </span>
-           </div>
-          </div>
-          <div class="section" id="section3">
-           <h2>
-            Languages
-           </h2>
-           <div class="carousel">
-            <img alt="Text in Hindi script" height="200" src="" width="150"/>
-            <img alt="Text in Chinese script" height="200" src="" width="150"/>
-            <img alt="Text in English script" height="200" src="" width="150"/>
-            <span class="arrow">
-             <i class="fas fa-arrow-right">
-             </i>
-            </span>
-           </div>
+            <h2>Best-sellers</h2>
+            <div class="carousel" data-carousel="bestSellers">
+                <div class="carousel-inner"></div>
+                <span class="arrow right" data-carousel="bestSellers">
+                    <i class="fas fa-arrow-right"></i>
+                </span>
+            </div>
+        </div>
+    
+        <div class="section" id="section2">
+            <h2>Authors</h2>
+            <div class="carousel" data-carousel="authors">
+                <div class="carousel-inner"></div>
+                <span class="arrow right" data-carousel="authors">
+                    <i class="fas fa-arrow-right"></i>
+                </span>
+            </div>
+        </div>
+    
+        <div class="section" id="section3">
+            <h2>Languages</h2>
+            <div class="carousel" data-carousel="languages">
+                <div class="carousel-inner"></div>
+                <span class="arrow right" data-carousel="languages">
+                    <i class="fas fa-arrow-right"></i>
+                </span>
+            </div>
+        </div>
     </div>
-    </div>
+    
     <div class="prt5">
     <div class="containerx">
         <div class="form-section">
@@ -318,4 +301,180 @@
        </div>
     </div>
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    populateBookshelf();
+});
+
+function populateBookshelf() {
+    const bookshelf = document.getElementById("bookshelf"); // Ensure this ID exists in your HTML
+    if (!bookshelf) {
+        console.error("Bookshelf element not found");
+        return;
+    }
+
+    // Your code to fetch and append JSON data to bookshelf element
+}
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Fetch all data from data.json
+        fetch("data.json")
+            .then(response => response.json())
+            .then(data => {
+                populateBookshelf(data.bestSellers); // Example for bookshelf
+                populateCategories(); // If categories are static or need to be dynamic
+                populatePreOrders(); // Example for pre-order section
+                initializeCarousels(data); // Initialize all carousels
+            })
+            .catch(error => console.error("Error fetching JSON data:", error));
+
+        // Populate Bookshelf Section (prt1)
+        function populateBookshelf(bestSellers) {
+            const bookshelf = document.getElementById("bookshelf");
+            bestSellers.slice(0, 4).forEach(book => { // Display first 4 books as example
+                const bookDiv = document.createElement("div");
+                bookDiv.classList.add("book");
+                bookDiv.innerHTML = `
+                    <div class="book-spine">
+                        <span class="book-title"><img src="${book.image}" alt="${book.alt}"></span>
+                    </div>
+                    <div class="book-cover">${book.title}</div>
+                `;
+                bookshelf.appendChild(bookDiv);
+            });
+        }
+
+        // Populate Categories Section (prt2)
+        function populateCategories() {
+            // If categories are dynamic, modify accordingly. Assuming static as per your HTML.
+            // If dynamic, you can include categories in the JSON and populate here.
+        }
+
+        // Populate Pre-order Section (prt3)
+        function populatePreOrders() {
+            const preOrderCards = document.getElementById("preOrderCards");
+            // Example pre-order books, you can also include this in data.json
+            const preOrders = [
+                {
+                    "title": "Everything is F*cked",
+                    "image": "images/Everything Is F_cked_ A Book About Hope.jpeg",
+                    "alt": "Book cover of 'Everything is F*cked' by Mark Manson",
+                    "price": "Rs. 349",
+                    "description": "In this thought-provoking follow-up to \"The Subtle Art of Not Giving a F*ck,\" Mark Manson explores the complexities of the human condition...",
+                    "features": [
+                        "Free world-wide shipping",
+                        "Free vintage bookmarks",
+                        "Save on books with discount coupons"
+                    ]
+                },
+                {
+                    "title": "The Love Hypothesis",
+                    "image": "images/The Love Hypothesis by Ali Hazelwood @PRHGlobal @BerkleyRomance __ Women in STEM book _ Books Teacup and Reviews.jpeg",
+                    "alt": "Book cover of 'The Love Hypothesis' by Ali Hazelwood",
+                    "price": "Rs. 399",
+                    "description": "A delightful romantic comedy that follows Olive Smith, a PhD student who fakes a relationship with a young hotshot professor...",
+                    "features": [
+                        "Free world-wide shipping",
+                        "Free vintage bookmarks",
+                        "Save on books with discount coupons"
+                    ]
+                },
+                {
+                    "title": "Find Me",
+                    "image": "images/Find Me.jpeg",
+                    "alt": "Book cover of 'Find Me' by André Aciman",
+                    "price": "Rs. 499",
+                    "description": "In this poignant sequel to \"Call Me by Your Name,\" André Aciman revisits the lives of Elio and Oliver years after their first encounter...",
+                    "features": [
+                        "Free world-wide shipping",
+                        "Free vintage bookmarks",
+                        "Save on books with discount coupons"
+                    ]
+                }
+            ];
+
+            preOrders.forEach(book => {
+                const card = document.createElement("div");
+                card.classList.add("book-card");
+                card.innerHTML = `
+                    <img src="${book.image}" alt="${book.alt}">
+                    <h2>${book.title}</h2>
+                    <p>${book.description}</p>
+                    <div class="price">${book.price}</div>
+                    <div class="pre-order"><b>Pre-order today</b></div>
+                    <ul>
+                        ${book.features.map(feature => `<li><i class="fas fa-shipping-fast"></i> ${feature}</li>`).join('')}
+                    </ul>
+                    <button class="pre-order-button">Pre-order now</button>
+                `;
+                preOrderCards.appendChild(card);
+            });
+        }
+
+        // Initialize Carousels for Best-sellers, Authors, Languages
+        function initializeCarousels(data) {
+            const carousels = document.querySelectorAll('.carousel');
+
+            carousels.forEach(carousel => {
+                const carouselType = carousel.getAttribute('data-carousel');
+                const carouselInner = carousel.querySelector('.carousel-inner');
+                const arrowRight = carousel.querySelector('.arrow.right');
+
+                let items;
+                if (carouselType === 'bestSellers') {
+                    items = data.bestSellers;
+                } else if (carouselType === 'authors') {
+                    items = data.authors;
+                } else if (carouselType === 'languages') {
+                    items = data.languages;
+                }
+
+                // Populate carousel items
+                items.forEach(item => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.classList.add('carousel-item');
+                    if (carouselType === 'bestSellers') {
+                        itemDiv.innerHTML = `<img src="${item.image}" alt="${item.alt}">`;
+                    } else if (carouselType === 'authors') {
+                        itemDiv.innerHTML = `<img src="${item.image}" alt="${item.alt}"><p>${item.name}</p>`;
+                    } else if (carouselType === 'languages') {
+                        itemDiv.innerHTML = `<img src="${item.image}" alt="${item.alt}"><p>${item.language}</p>`;
+                    }
+                    carouselInner.appendChild(itemDiv);
+                });
+
+                // Set initial carousel position
+                let currentIndex = 0;
+                const visibleItems = 5;
+                const totalItems = items.length;
+                const maxIndex = Math.ceil(totalItems / visibleItems) - 1;
+
+                // Calculate the width percentage for each item
+                const itemWidth = 100 / visibleItems;
+
+                // Set carousel-inner width
+                carouselInner.style.width = `${(100 * Math.ceil(totalItems / visibleItems))}%`;
+
+                // Apply flex layout to carousel-inner
+                carouselInner.style.display = 'flex';
+                carouselInner.style.transition = 'transform 0.5s ease';
+
+                // Handle arrow click
+                arrowRight.addEventListener('click', () => {
+                    if (currentIndex < maxIndex) {
+                        currentIndex++;
+                    } else {
+                        currentIndex = 0; // Loop back to start
+                    }
+                    updateCarousel();
+                });
+
+                // Function to update carousel position
+                function updateCarousel() {
+                    carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+                }
+            });
+        }
+    });
+</script>
 </html>
