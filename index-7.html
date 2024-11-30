@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shelf Whisper - Harry Potter</title>
+    <title>Shelf Whisper - Book Details</title>
     <link rel="stylesheet" href="styles-7.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&display=swap" rel="stylesheet">
-    
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="logo">
-                <img src="Rectangle 2.png" alt="Shelf Share Logo">
+                <img src="Rectangle 2.png" alt="Shelf Whisper Logo">
             </div>
             <ul class="nav-links">
                 <li><a href="index-4.html">Home</a></li>
@@ -33,15 +32,15 @@
         <section class="book-details-section">
             <div class="left-section">
                 <div class="book-image">
-                    <img src="harry potter.jpg" alt="Harry Potter Book Cover">
+                    <img id="bookImage" src="" alt="Book Cover">
                 </div>
-                <h1 class="book-title">Harry Potter and the Philosopher's Stone</h1>
+                <h1 id="bookTitle" class="book-title"></h1>
                 <div class="extra-info">
-                    <p><strong>Rented Till Now:</strong> 4 Times</p>
-                    <p><strong>Reading Time:</strong> 30 Days</p>
+                    <p><strong>Rented Till Now:</strong> <span id="bookRentCount"></span></p>
+                    <p><strong>Reading Time:</strong> <span id="bookReadingTime"></span></p>
                 </div>
                 <div class="price-container">
-                    <p><strong>Price - Rs 70</strong></p>
+                    <p><strong>Price - Rs <span id="bookPrice"></span></strong></p>
                 </div>
             </div>
 
@@ -49,11 +48,11 @@
                 <div class="book-section">
                     <div class="book-description">
                         <ul>
-                            <li><strong>Author:</strong> J.K Rowling</li>
-                            <li><strong>Rented By:</strong> Ayush Gupta</li>
-                            <li><strong>Listed on:</strong> 20-12-2022</li>
-                            <li><strong>Location:</strong> Hyderabad</li>
-                            <li><strong>Description:</strong> Harry Potter and the Philosophers Stone is the first novel of the much appreciated Harry Potter series . An abridged version of the same novel, this book has been brought out by Bloomsbury Press for children aged between eight and twelve years . The story unfolds with a letter arriving for Harry Potter, a simple boy, that brings with it a dark secret . The letter reveals to Harry Potter that both his parents were wizards and were killed by a Dark Lord’s curse when he was just a baby . Thereafter Potters journey to the Hogwarts, a school of wizards brimming with magic, mystery and enchantment, spins out into a fascinating tale.</li>
+                            <li><strong>Author:</strong> <span id="bookAuthor"></span></li>
+                            <li><strong>Rented By:</strong> <span id="bookRenter"></span></li>
+                            <li><strong>Listed on:</strong> <span id="bookListedDate"></span></li>
+                            <li><strong>Location:</strong> <span id="bookLocation"></span></li>
+                            <li><strong>Description:</strong> <span id="bookDescription"></span></li>
                         </ul>
                     </div>
                 </div>
@@ -65,6 +64,28 @@
             </div>
         </section>
     </main>
-    <script src="scirpt-7.js"></script>
+
+    <script>
+        // Script to populate book details dynamically
+        document.addEventListener('DOMContentLoaded', () => {
+            const bookDetails = JSON.parse(localStorage.getItem('selectedBook'));
+
+            if (bookDetails) {
+                document.getElementById('bookImage').src = `http://localhost:4000/${bookDetails.photos[0]}`;
+                document.getElementById('bookTitle').textContent = bookDetails.title;
+                document.getElementById('bookRentCount').textContent = bookDetails.rentedCount || 'N/A';
+                document.getElementById('bookReadingTime').textContent = bookDetails.readingTime || 'N/A';
+                document.getElementById('bookPrice').textContent = bookDetails.price;
+                document.getElementById('bookAuthor').textContent = bookDetails.author;
+                document.getElementById('bookRenter').textContent = bookDetails.renter || 'N/A';
+                document.getElementById('bookListedDate').textContent = bookDetails.listedDate || 'N/A';
+                document.getElementById('bookLocation').textContent = bookDetails.location || 'N/A';
+                document.getElementById('bookDescription').textContent = bookDetails.description;
+            } else {
+                alert('No book selected');
+                window.location.href = 'index-6.html'; // Redirect to books page
+            }
+        });
+    </script>
 </body>
 </html>
