@@ -46,7 +46,30 @@ app.use(express.static('D:/Shelf-whisper-'));
 app.get('/', (req, res) => {
   res.sendFile(path.join('D:/Shelf-whisper-', 'setpassword.html'));
 });
+app.post('/setpassword.html', async (req, res) => {
+  const { fullname, email, password, confirmPassword } = req.body;
 
+  
+  if (password !== confirmPassword) {
+      return res.status(400).json({ message: 'Passwords do not match' });
+  }
+
+  try {
+      const existingUser = await User.findOne({ email });
+      if (existingUser) {
+          return res.status(400).json({ message: 'Email already registered' });
+      }
+
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const newUser = new User({ fullname, email, password: hashedPassword });
+
+      await newUser.save();
+      res.status(201).json({ message: 'User created successfully' });
+  } catch (error) {
+      console.error('Signup Error:', error);
+      res.status(500).json({ message: 'Server error' });
+    }
+});
 // User Login Route (for login in enterpassword.html)
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
@@ -166,3 +189,5 @@ app.listen(PORT, () => {
 // app.get('/', (req, res) => {
 //   res.render('index-6'); // Render the index-6.ejs file
 // });
+
+
