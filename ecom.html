@@ -149,7 +149,7 @@
                 <button class="pre-order-button">Pre-order now</button>
             </div>
             <div class="book-card">
-                <img alt="Book cover of 'The Love Hypothesis' by Ali Hazelwood" height="150" src="images/The Love Hypothesis by Ali Hazelwood @PRHGlobal @BerkleyRomance __ Women in STEM book _ Books Teacup and Reviews.jpeg" width="100"/>
+                <img alt="Book cover of 'The Love Hypothesis' by Ali Hazelwood" height="150" src="images/The Love Hypothesis by Ali Hazelwood @PRHGlobal @BerkleyRomance __ Women in STEM book _ Books Teacup and Reviews.jpeg" width="100"/>
                 <h2>The Love Hypothesis.</h2>
                 <p>A delightful romantic comedy that follows Olive Smith, a PhD student who fakes a relationship with a young hotshot professor to convince her best friend she's over her ex. But as their pretend relationship starts to feel real, Olive must decide if she’s ready to risk her heart for love.</p>
                 <div class="price">Rs. 399</div>
@@ -302,179 +302,32 @@
     </div>
 </body>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-    populateBookshelf();
-});
+   const carouselInner = document.getElementById('carouselInner');
+const prevArrow = document.getElementById('prevArrow');
+const nextArrow = document.getElementById('nextArrow');
 
-function populateBookshelf() {
-    const bookshelf = document.getElementById("bookshelf"); // Ensure this ID exists in your HTML
-    if (!bookshelf) {
-        console.error("Bookshelf element not found");
-        return;
-    }
+// Get all carousel items
+const items = document.querySelectorAll('.carousel-item');
+let currentIndex = 0;
 
-    // Your code to fetch and append JSON data to bookshelf element
+// Update carousel position
+function updateCarousel() {
+    const offset = -currentIndex * 100;
+    carouselInner.style.transform = `translateX(${offset}%)`;
 }
 
-    document.addEventListener("DOMContentLoaded", function() {
-        // Fetch all data from data.json
-        fetch("data.json")
-            .then(response => response.json())
-            .then(data => {
-                populateBookshelf(data.bestSellers); // Example for bookshelf
-                populateCategories(); // If categories are static or need to be dynamic
-                populatePreOrders(); // Example for pre-order section
-                initializeCarousels(data); // Initialize all carousels
-            })
-            .catch(error => console.error("Error fetching JSON data:", error));
+// Add event listeners to arrows
+prevArrow.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + items.length) % items.length;
+    updateCarousel();
+});
 
-        // Populate Bookshelf Section (prt1)
-        function populateBookshelf(bestSellers) {
-            const bookshelf = document.getElementById("bookshelf");
-            bestSellers.slice(0, 4).forEach(book => { // Display first 4 books as example
-                const bookDiv = document.createElement("div");
-                bookDiv.classList.add("book");
-                bookDiv.innerHTML = `
-                    <div class="book-spine">
-                        <span class="book-title"><img src="${book.image}" alt="${book.alt}"></span>
-                    </div>
-                    <div class="book-cover">${book.title}</div>
-                `;
-                bookshelf.appendChild(bookDiv);
-            });
-        }
+nextArrow.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % items.length;
+    updateCarousel();
+});
 
-        // Populate Categories Section (prt2)
-        function populateCategories() {
-            // If categories are dynamic, modify accordingly. Assuming static as per your HTML.
-            // If dynamic, you can include categories in the JSON and populate here.
-        }
-
-        // Populate Pre-order Section (prt3)
-        function populatePreOrders() {
-            const preOrderCards = document.getElementById("preOrderCards");
-            // Example pre-order books, you can also include this in data.json
-            const preOrders = [
-                {
-                    "title": "Everything is F*cked",
-                    "image": "images/Everything Is F_cked_ A Book About Hope.jpeg",
-                    "alt": "Book cover of 'Everything is F*cked' by Mark Manson",
-                    "price": "Rs. 349",
-                    "description": "In this thought-provoking follow-up to \"The Subtle Art of Not Giving a F*ck,\" Mark Manson explores the complexities of the human condition...",
-                    "features": [
-                        "Free world-wide shipping",
-                        "Free vintage bookmarks",
-                        "Save on books with discount coupons"
-                    ]
-                },
-                {
-                    "title": "The Love Hypothesis",
-                    "image": "images/The Love Hypothesis by Ali Hazelwood @PRHGlobal @BerkleyRomance __ Women in STEM book _ Books Teacup and Reviews.jpeg",
-                    "alt": "Book cover of 'The Love Hypothesis' by Ali Hazelwood",
-                    "price": "Rs. 399",
-                    "description": "A delightful romantic comedy that follows Olive Smith, a PhD student who fakes a relationship with a young hotshot professor...",
-                    "features": [
-                        "Free world-wide shipping",
-                        "Free vintage bookmarks",
-                        "Save on books with discount coupons"
-                    ]
-                },
-                {
-                    "title": "Find Me",
-                    "image": "images/Find Me.jpeg",
-                    "alt": "Book cover of 'Find Me' by André Aciman",
-                    "price": "Rs. 499",
-                    "description": "In this poignant sequel to \"Call Me by Your Name,\" André Aciman revisits the lives of Elio and Oliver years after their first encounter...",
-                    "features": [
-                        "Free world-wide shipping",
-                        "Free vintage bookmarks",
-                        "Save on books with discount coupons"
-                    ]
-                }
-            ];
-
-            preOrders.forEach(book => {
-                const card = document.createElement("div");
-                card.classList.add("book-card");
-                card.innerHTML = `
-                    <img src="${book.image}" alt="${book.alt}">
-                    <h2>${book.title}</h2>
-                    <p>${book.description}</p>
-                    <div class="price">${book.price}</div>
-                    <div class="pre-order"><b>Pre-order today</b></div>
-                    <ul>
-                        ${book.features.map(feature => `<li><i class="fas fa-shipping-fast"></i> ${feature}</li>`).join('')}
-                    </ul>
-                    <button class="pre-order-button">Pre-order now</button>
-                `;
-                preOrderCards.appendChild(card);
-            });
-        }
-
-        // Initialize Carousels for Best-sellers, Authors, Languages
-        function initializeCarousels(data) {
-            const carousels = document.querySelectorAll('.carousel');
-
-            carousels.forEach(carousel => {
-                const carouselType = carousel.getAttribute('data-carousel');
-                const carouselInner = carousel.querySelector('.carousel-inner');
-                const arrowRight = carousel.querySelector('.arrow.right');
-
-                let items;
-                if (carouselType === 'bestSellers') {
-                    items = data.bestSellers;
-                } else if (carouselType === 'authors') {
-                    items = data.authors;
-                } else if (carouselType === 'languages') {
-                    items = data.languages;
-                }
-
-                // Populate carousel items
-                items.forEach(item => {
-                    const itemDiv = document.createElement('div');
-                    itemDiv.classList.add('carousel-item');
-                    if (carouselType === 'bestSellers') {
-                        itemDiv.innerHTML = `<img src="${item.image}" alt="${item.alt}">`;
-                    } else if (carouselType === 'authors') {
-                        itemDiv.innerHTML = `<img src="${item.image}" alt="${item.alt}"><p>${item.name}</p>`;
-                    } else if (carouselType === 'languages') {
-                        itemDiv.innerHTML = `<img src="${item.image}" alt="${item.alt}"><p>${item.language}</p>`;
-                    }
-                    carouselInner.appendChild(itemDiv);
-                });
-
-                // Set initial carousel position
-                let currentIndex = 0;
-                const visibleItems = 5;
-                const totalItems = items.length;
-                const maxIndex = Math.ceil(totalItems / visibleItems) - 1;
-
-                // Calculate the width percentage for each item
-                const itemWidth = 100 / visibleItems;
-
-                // Set carousel-inner width
-                carouselInner.style.width = `${(100 * Math.ceil(totalItems / visibleItems))}%`;
-
-                // Apply flex layout to carousel-inner
-                carouselInner.style.display = 'flex';
-                carouselInner.style.transition = 'transform 0.5s ease';
-
-                // Handle arrow click
-                arrowRight.addEventListener('click', () => {
-                    if (currentIndex < maxIndex) {
-                        currentIndex++;
-                    } else {
-                        currentIndex = 0; // Loop back to start
-                    }
-                    updateCarousel();
-                });
-
-                // Function to update carousel position
-                function updateCarousel() {
-                    carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
-                }
-            });
-        }
-    });
+// Initialize carousel position
+updateCarousel();
 </script>
 </html>

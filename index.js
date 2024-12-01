@@ -140,11 +140,29 @@ app.get('/get-books', async (req, res) => {
 });
 
 // Default fallback route (for 404 errors)
-app.get('*', (req, res) => {
-  res.status(404).send('Page not found');
+
+
+
+
+app.set('view engine', 'ejs'); // Set EJS as the template engine
+app.set('views', path.join(__dirname,'views')); 
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/index-6', (req, res) => {
+  console.log('Request received for /index-6');
+  res.render('index-6');
+});
+app.get('/index-5', (req, res) => {
+  console.log('Request received for /index-7');
+  res.render('index-5');
 });
 
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+
+// app.get('/', (req, res) => {
+//   res.render('index-6'); // Render the index-6.ejs file
+// });

@@ -1,49 +1,50 @@
-const searchInput = document.getElementById("searchInput");
-const searchResult = document.getElementById("searchResult");
-const bookGrid = document.getElementById("book-grid");
-let books = [];
+async function fetchBooks() {
+    try {
+        const response = await fetch('http://localhost:4000/get-books');
+        const data = await response.json();
 
-// Fetch books data from JSON
-fetch('progress-6.json')
-  .then(response => response.json())
-  .then(data => {
-    books = data;
-    displayBooks(books); // Display books when the page loads
-  })
-  .catch(error => console.error('Error fetching the books data:', error));
+        if (response.ok) {
+            const books = data.books;
+            const bookGrid = document.getElementById('book-grid');
+            bookGrid.innerHTML = '';
 
-// Function to display books on the webpage
-function displayBooks(bookList) {
-    bookGrid.innerHTML = ''; // Clear the existing books
-    bookList.forEach(book => {
-        const bookDiv = document.createElement('div');
-        bookDiv.classList.add('book');
-        bookDiv.innerHTML = `
-            <a href="${book.link}">
-                <img src="${book.image}" alt="${book.title}">
-                <p>${book.title}</p>
-            </a>
-        `;
-        bookGrid.appendChild(bookDiv);
-    });
-}
+            books.forEach(book => {
+                const bookCard = document.createElement('div');
+                bookCard.classList.add('book-card');
 
-// Function to search books
-function searchBooks() {
-    const filter = searchInput.value.toLowerCase();
-    const filteredBooks = books.filter(book => book.title.toLowerCase().includes(filter));
-    
-    // Display search result
-    if (filteredBooks.length > 0 && filter) {
-        searchResult.innerText = filteredBooks[0].title;
-        searchResult.style.display = "block";
-    } else {
-        searchResult.style.display = "none";
+                // Book Image
+                const bookImage = document.createElement('img');
+                bookImage.src = `http://localhost:4000/${book.photos[0]}`;
+                bookImage.alt = `Cover of ${book.title}`;
+                bookImage.classList.add('book-photo');
+                bookCard.appendChild(bookImage);
+
+                // Book Title
+                const bookTitle = document.createElement('h3');
+                bookTitle.textContent = book.title;
+                bookCard.appendChild(bookTitle);
+
+                // Book Price
+                const bookPrice = document.createElement('p');
+                bookPrice.textContent = `Price: $${book.price}`;
+                bookCard.appendChild(bookPrice);
+
+                // Store book details in localStorage on click
+                bookCard.onclick = () => {
+                    localStorage.setItem('selectedBook', JSON.stringify(book));
+                    window.location.href = 'index-7.html';
+                };
+
+                // Append the card to the grid
+                bookGrid.appendChild(bookCard);
+            });
+        } else {
+            alert('Failed to load books');
+        }
+    } catch (error) {
+        console.error('Error fetching books:', error);
+        alert('An error occurred while fetching books');
     }
-    
-    // Display filtered books
-    displayBooks(filteredBooks);
 }
 
-// Event listener for real-time search results as the user types
-searchInput.addEventListener("input", searchBooks);
+window.onload = fetchBooks;

@@ -6,8 +6,8 @@
     <title>Shelf Whisper</title>
     <link rel="stylesheet" href="styles-5.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -17,8 +17,8 @@
             </div>
             <ul class="nav-links">
                 <li><a href="index-4.html">Home</a></li>
-                <li><a href="index-5.html">Genre</a></li>
-                <li><a href="index-6.html">Books</a></li>
+                <li><a href="/index-5">Genre</a></li>
+                <li><a href="/index-6">Books</a></li>
                 <li><a href="rental-login.html">Support</a></li>
             </ul>
             <div class="icons">
@@ -29,69 +29,77 @@
     </header>
 
     <section class="search-bar">
-        <input type="text" placeholder="Hinted search text">
-        <button>Search</button>
+        <input id="searchInput" type="text" placeholder="Search by book name or genre">
+        <button id="searchButton">Search</button>
     </section>
 
-
-        <section class="categories">
-            <section class="categories-container">
+    <section class="categories">
+        <section class="categories-container">
             <h2>Categories</h2>
         </section>
-            <div class="book-grid">
-                <a href="index-6.html"><div class="book book1">
-                    <img src="Component 60.png" alt="Harry Potter">
-                    <br><br>
-                    <p>Fantasy</p>
-                </div></a>
-                <div class="book book2">
-                    <img src="Component 61.png" alt="Dune">
-                    <br><br>
-                    <p>Fiction</p>
-                </div>
-                <div class="book book3">
-                    <img src="Component 62.png" alt="Two Storm Wood">
-                    <br><br>
-                    <p>Action</p>
-                </div>
-                <div class="book book4">
-                    <img src="Component 63.png" alt="If She Knew">
-                    <br><br>
-                    <p>Mystery</p>
-                </div>
-                <div class="book book5">
-                    <img src="Component 64.png" alt="Black Forest">
-                    <br><br>
-                    <p>Horror</p>
-                </div>
-                <div class="book book6">
-                    <img src="Component 65.png" alt="Waiting for An">
-                    <br><br>
-                    <p>Romance</p>
-                </div>
-                <div class="book book7">
-                    <img src="Component 66.png" alt="An Autobiography">
-                    <br><br>
-                    <p>Autobiography</p>
-                </div>
-                <div class="book book8">
-                    <img src="Component 67.png" alt="History of the Ancient World">
-                    <br><br>
-                    <p>History</p>
-                </div>
-                <div class="book book9">
-                    <img src="Component 68.png" alt="Concepts of Physics">
-                    <br><br>
-                    <p>Education</p>
-                </div>
-                <div class="book book10">
-                    <img src="Component 69.png" alt="Rich Dad Poor Dad">
-                    <br><br>
-                    <p>Non-Fiction</p>
-                </div>
+        <div class="book-grid" id="bookGrid">
+            <a href="/index-6"><div class="book book1" data-title="Harry Potter" data-genre="Fantasy">
+                <img src="Component 60.png" alt="Harry Potter">
+                <p>Fantasy</p>
+            </div></a>
+            <div class="book book2" data-title="Dune" data-genre="Fiction">
+                <img src="Component 61.png" alt="Dune">
+                <p>Fiction</p>
             </div>
-        </section>
+            <div class="book book3" data-title="Two Storm Wood" data-genre="Action">
+                <img src="Component 62.png" alt="Two Storm Wood">
+                <p>Action</p>
+            </div>
+            <div class="book book4" data-title="If She Knew" data-genre="Mystery">
+                <img src="Component 63.png" alt="If She Knew">
+                <p>Mystery</p>
+            </div>
+            <div class="book book5" data-title="Black Forest" data-genre="Horror">
+                <img src="Component 64.png" alt="Black Forest">
+                <p>Horror</p>
+            </div>
+            <div class="book book6" data-title="Waiting for An" data-genre="Romance">
+                <img src="Component 65.png" alt="Waiting for An">
+                <p>Romance</p>
+            </div>
+            <div class="book book7" data-title="An Autobiography" data-genre="Autobiography">
+                <img src="Component 66.png" alt="An Autobiography">
+                <p>Autobiography</p>
+            </div>
+            <div class="book book8" data-title="History of the Ancient World" data-genre="History">
+                <img src="Component 67.png" alt="History of the Ancient World">
+                <p>History</p>
+            </div>
+            <div class="book book9" data-title="Concepts of Physics" data-genre="Education">
+                <img src="Component 68.png" alt="Concepts of Physics">
+                <p>Education</p>
+            </div>
+            <div class="book book10" data-title="Rich Dad Poor Dad" data-genre="Non-Fiction">
+                <img src="Component 69.png" alt="Rich Dad Poor Dad">
+                <p>Non-Fiction</p>
+            </div>
+        </div>
     </section>
-    
+
+    <script>
+        document.getElementById("searchButton").addEventListener("click", filterBooks);
+        document.getElementById("searchInput").addEventListener("input", filterBooks);
+
+        function filterBooks() {
+            const searchValue = document.getElementById("searchInput").value.toLowerCase();
+            const books = document.querySelectorAll(".book");
+
+            books.forEach(book => {
+                const title = book.getAttribute("data-title").toLowerCase();
+                const genre = book.getAttribute("data-genre").toLowerCase();
+
+                if (title.includes(searchValue) || genre.includes(searchValue)) {
+                    book.style.display = "block"; // Show the book
+                } else {
+                    book.style.display = "none"; // Hide the book
+                }
+            });
+        }
+    </script>
 </body>
 </html>
