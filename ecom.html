@@ -149,7 +149,7 @@
                 <button class="pre-order-button">Pre-order now</button>
             </div>
             <div class="book-card">
-                <img alt="Book cover of 'The Love Hypothesis' by Ali Hazelwood" height="150" src="images/The Love Hypothesis by Ali Hazelwood @PRHGlobal @BerkleyRomance __ Women in STEM book _ Books Teacup and Reviews.jpeg" width="100"/>
+                <img alt="Book cover of 'The Love Hypothesis' by Ali Hazelwood" height="150" src="images/The Love Hypothesis by Ali Hazelwood @PRHGlobal @BerkleyRomance __ Women in STEM book _ Books Teacup and Reviews.jpeg" width="100"/>
                 <h2>The Love Hypothesis.</h2>
                 <p>A delightful romantic comedy that follows Olive Smith, a PhD student who fakes a relationship with a young hotshot professor to convince her best friend she's over her ex. But as their pretend relationship starts to feel real, Olive must decide if she’s ready to risk her heart for love.</p>
                 <div class="price">Rs. 399</div>
@@ -301,33 +301,217 @@
        </div>
     </div>
 </body>
+
+
+
+
+
+
 <script>
-   const carouselInner = document.getElementById('carouselInner');
-const prevArrow = document.getElementById('prevArrow');
-const nextArrow = document.getElementById('nextArrow');
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        const defaultData = {
+            bestSellers: [
+                { image: "images/Everything Is F_cked_ A Book About Hope.jpeg", alt: "Everything is F*cked", title: "Everything is F*cked" },
+                { image: "images/The Love Hypothesis by Ali Hazelwood @PRHGlobal @BerkleyRomance __ Women in STEM book _ Books Teacup and Reviews.jpeg", alt: "The Love Hypothesis", title: "The Love Hypothesis" },
+                { image: "images/Find Me.jpeg", alt: "Find Me", title: "Find Me" },
+ 
+            ],
+            authors: [
+                { image: "images/authors/author1.jpg", alt: "Author 1", name: "Mark Manson" },
+                { image: "images/authors/author2.jpg", alt: "Author 2", name: "Ali Hazelwood" },
+                { image: "images/authors/author3.jpg", alt: "Author 3", name: "André Aciman" },
+            
+            ],
+            languages: [
+                { image: "images/languages/en.jpg", alt: "English", language: "English" },
+                { image: "images/languages/es.jpg", alt: "Spanish", language: "Spanish" },
+                { image: "images/languages/fr.jpg", alt: "French", language: "French" },
+           
+            ]
+        };
+    
+       
+        fetch("data.json")
+            .catch(error => {
+                console.log("Using default data:", error);
+                return { json: () => defaultData };
+            })
+            .then(khushi => khushi.json())
+            .then(data => {
+                initializeCarousels(data);
+            });
 
-// Get all carousel items
-const items = document.querySelectorAll('.carousel-item');
-let currentIndex = 0;
+        function initializeCarousels(data) {
+            const carousels = document.querySelectorAll('.carousel');
 
-// Update carousel position
-function updateCarousel() {
-    const offset = -currentIndex * 100;
-    carouselInner.style.transform = `translateX(${offset}%)`;
-}
+            carousels.forEach(carousel => {
+                const carouselType = carousel.getAttribute('data-carousel');
+                const carouselInner = carousel.querySelector('.carousel-inner');
+                const arrowRight = carousel.querySelector('.arrow.right');
 
-// Add event listeners to arrows
-prevArrow.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + items.length) % items.length;
-    updateCarousel();
-});
+          
+                const items = data[carouselType] || [];
 
-nextArrow.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % items.length;
-    updateCarousel();
-});
 
-// Initialize carousel position
-updateCarousel();
+                carouselInner.innerHTML = '';
+
+        
+                items.forEach(item => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.classList.add('carousel-item');
+                    
+                    let content = '';
+                    if (carouselType === 'bestSellers') {
+                        content = `
+                            <div >
+                                <img src="${item.image}" alt="${item.alt}" style="width: 150px; height: 200px;">
+                                <h3>${item.title}</h3>
+                            </div>
+                        `;
+                    } else if (carouselType === 'authors') {
+                        content = `
+                            <div class="author-card">
+                                <img src="${item.image}" alt="${item.alt}" style="width: 150px; height: 150px; border-radius: 50%;">
+                                <p>${item.name}</p>
+                            </div>
+                        `;
+                    } else if (carouselType === 'languages') {
+                        content = `
+                            <div class="language-card">
+                                <img src="${item.image}" alt="${item.alt}" style="width: 100px; height: 100px;">
+                                <p>${item.language}</p>
+                            </div>
+                        `;
+                    }
+
+                    itemDiv.innerHTML = content;
+                    carouselInner.appendChild(itemDiv);
+                });
+
+          
+                let currentIndex = 0;
+                const itemWidth = 20; 
+                const maxIndex = Math.max(0, Math.ceil(items.length / 5) - 1);
+
+        
+                carouselInner.style.display = 'flex';
+                carouselInner.style.transition = 'transform 0.5s ease';
+                carouselInner.style.width = `${items.length * itemWidth}%`;
+
+                
+                arrowRight.addEventListener('click', () => {
+                    currentIndex = currentIndex < maxIndex ? currentIndex + 1 : 0;
+                    carouselInner.style.transform = `translateX(-${currentIndex * (100)}%)`;
+                });
+            });
+        }
+
+        // Populate bookshelf function
+        function populateBookshelf() {
+            const bookshelf = document.getElementById("bookshelf"); 
+            if (!bookshelf) {
+                console.error("Bookshelf element not found");
+                return;
+            }
+            // Your code to fetch and append JSON data to bookshelf element
+        }
+
+        // Fetch all data from data.json
+        fetch("data.json")
+            .then(response => response.json())
+            .then(data => {
+                populateBookshelf(data.bestSellers); // Example for bookshelf
+                populateCategories(); // If categories are static or need to be dynamic
+                populatePreOrders(); // Example for pre-order section
+                initializeCarousels(data); // Initialize all carousels
+            })
+            .catch(error => console.error("Error fetching JSON data:", error));
+
+        // Populate Bookshelf Section (prt1)
+        function populateBookshelf(bestSellers) {
+            const bookshelf = document.getElementById("bookshelf");
+            bestSellers.slice(0, 4).forEach(book => { // Display first 4 books as example
+                const bookDiv = document.createElement("div");
+                bookDiv.classList.add("book");
+                bookDiv.innerHTML = `
+                    <div class="book-spine">
+                        <span class="book-title"><img src="${book.image}" alt="${book.alt}"></span>
+                    </div>
+                    <div class="book-cover">${book.title}</div>
+                `;
+                bookshelf.appendChild(bookDiv);
+            });
+        }
+
+        // Populate Categories Section (prt2)
+        function populateCategories() {
+            // If categories are dynamic, modify accordingly. Assuming static as per your HTML.
+            // If dynamic, you can include categories in the JSON and populate here.
+        }
+
+        // Populate Pre-order Section (prt3)
+        function populatePreOrders() {
+            const preOrderCards = document.getElementById("preOrderCards");
+            // Example pre-order books, you can also include this in data.json
+            const preOrders = [
+                {
+                    "title": "Everything is F*cked",
+                    "image": "images/Everything Is F_cked_ A Book About Hope.jpeg",
+                    "alt": "Book cover of 'Everything is F*cked' by Mark Manson",
+                    "price": "Rs. 349",
+                    "description": "In this thought-provoking follow-up to \"The Subtle Art of Not Giving a F*ck,\" Mark Manson explores the complexities of the human condition...",
+                    "features": [
+                        "Free world-wide shipping",
+                        "Free vintage bookmarks",
+                        "Save on books with discount coupons"
+                    ]
+                },
+                {
+                    "title": "The Love Hypothesis",
+                    "image": "images/The Love Hypothesis by Ali Hazelwood @PRHGlobal @BerkleyRomance __ Women in STEM book _ Books Teacup and Reviews.jpeg",
+                    "alt": "Book cover of 'The Love Hypothesis' by Ali Hazelwood",
+                    "price": "Rs. 399",
+                    "description": "A delightful romantic comedy that follows Olive Smith, a PhD student who fakes a relationship with a young hotshot professor...",
+                    "features": [
+                        "Free world-wide shipping",
+                        "Free vintage bookmarks",
+                        "Save on books with discount coupons"
+                    ]
+                },
+                {
+                    "title": "Find Me",
+                    "image": "images/Find Me.jpeg",
+                    "alt": "Book cover of 'Find Me' by André Aciman",
+                    "price": "Rs. 499",
+                    "description": "In this poignant sequel to \"Call Me by Your Name,\" André Aciman revisits the lives of Elio and Oliver years after their first encounter...",
+                    "features": [
+                        "Free world-wide shipping",
+                        "Free vintage bookmarks",
+                        "Save on books with discount coupons"
+                    ]
+                }
+            ];
+
+            preOrders.forEach(book => {
+                const card = document.createElement("div");
+                card.classList.add("book-card");
+                card.innerHTML = `
+                    <img src="${book.image}" alt="${book.alt}">
+                    <h2>${book.title}</h2>
+                    <p>${book.description}</p>
+                    <div class="price">${book.price}</div>
+                    <div class="pre-order"><b>Pre-order today</b></div>
+                    <ul>
+                        ${book.features.map(feature => `<li><i class="fas fa-shipping-fast"></i> ${feature}</li>`).join('')}
+                    </ul>
+                    <button class="pre-order-button">Pre-order now</button>
+                `;
+                preOrderCards.appendChild(card);
+            });
+        }
+
+    });
 </script>
+
 </html>
